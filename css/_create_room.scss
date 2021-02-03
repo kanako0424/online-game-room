@@ -1,0 +1,70 @@
+@import "variables";
+
+form.create-room {
+  margin: 5px;
+  padding: 15px;
+  input, select, textarea {
+    width: 100%;
+  }
+  label {
+    margin: 3px 0px;
+  }
+  .game-name {
+    width: 100%;
+  }
+  .call {
+    display: flex;
+    justify-content: space-between;
+  }
+  .call-app, .face {
+    width: calc(90% / 2);
+  }
+  .age {
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      input {
+        width: calc(90% / 2);
+      }
+    }
+  }
+  .g-h {
+    display: flex;
+    justify-content: space-between;
+  }
+  .gender, .head-count {
+    width: calc(90% / 2);
+  }
+  .date {
+    width: 100%;
+  }
+  .time {
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      input {
+        width: calc(90% / 2);
+      }
+    }
+  }
+  button {
+    @include nuemo;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    border-radius: 20px;
+    padding: 10px;
+    width: calc(100vw / 3);
+    color: $sub_color;
+  }
+  @include tab {
+    width: 80%;
+    margin: auto;
+    .gender, .head-count, .call-app, .face {
+      width: calc(90% / 2);
+    }
+  };
+}

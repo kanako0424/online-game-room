@@ -1,0 +1,73 @@
+@import "variables";
+
+.room {
+  width: 100%;
+  @include nuemo;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  padding: 15px;
+  border-radius: 15px;
+  .room-header {
+    display: flex;
+    img {
+      margin-right: 5px; 
+    }
+    div {
+      width: 100%;
+    }
+  }
+  .room-body {
+    .room-content {
+      margin-bottom: 5px;
+      table {
+        margin: 5px 0px;
+        td {
+          width: 50%;
+        }
+      }
+      div {
+        margin-bottom: 5px;
+      }
+    }
+    .room-link {
+      color: $sub_color;
+    }
+    .already-joined {
+      margin: 10px 0px;
+      p {
+        margin-bottom: 5px;
+      }
+      div {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        overflow: scroll;
+        img {
+          margin: 0px 5px;
+        }
+      }
+    }
+    .button {
+      @include nuemo;
+      margin: 5px 5px;
+      padding: 10px;
+      border-radius: 0px;
+      border-radius: 30px;
+      &:active {
+        @include nuemo-inset($bg_color);
+    }
+    .dm, .edit {
+      color: $font-color;
+      }
+    }
+    .join {
+      color: $sub_color;
+    }
+    .delete, .cancel-join {
+      color: $red;
+    }
+  }
+  @include tab {
+    width: calc((100% / 2) - 15px);
+  };
+}

@@ -1,0 +1,38 @@
+@import "variables";
+
+.message {
+  @include nuemo;
+  width: 100%;
+  display: flex;
+  padding: 10px 0px;
+  margin: 10px 0px;
+  background: $bg_color;
+  img {
+    margin: 0px 5px;
+  }
+  .message-header {
+    display: inline-flex;
+    align-items: flex-end;
+    width: 100%;
+    margin-bottom: 3px;
+  }
+  .date {
+    color: darken($gray, 40%);
+    margin: 0 10px;
+  }
+  .date-bell {
+    color: darken($gray, 40%);
+  }
+  .message-content {
+    margin: 0 10px;
+  }
+}
+
+@include tab {
+  .messages {
+  width: 40%;
+  }
+  .message-display {
+    width: 50%;
+  }
+};

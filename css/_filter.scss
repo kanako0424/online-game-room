@@ -1,0 +1,93 @@
+@import "variables";
+
+#filter {
+  overflow-y: scroll;
+  padding: 15px;
+  width: 100%;
+  height: 100%;
+  background-color: $bg_color;
+  z-index: 20;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  header {
+    padding: 0px 15px;
+  }
+  .search-room {
+    height: 120%;
+    padding-top: 60px;
+    margin: auto;
+    @include tab {
+      width: 80%;
+    };
+  }
+  input, select, textarea {
+    width: 100%;
+  }
+  label {
+    margin: 3px 0px;
+  }
+  .game-name {
+    width: 100%;
+  }
+  .call {
+    display: flex;
+    justify-content: space-between;
+  }
+  .call-app, .face {
+    width: calc(80vw / 2);
+    @include tab {
+      width: calc(75vw / 2);
+    };
+  }
+  .age {
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      input {
+        width: calc(80vw / 2);
+      }
+    }
+  }
+  .g-h {
+    display: flex;
+    justify-content: space-between;
+  }
+  .gender, .head-count {
+    width: calc(80vw / 2);
+    @include tab {
+      width: calc(75vw / 2);
+    };
+  }
+  .date {
+    width: 100%;
+  }
+  .time {
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      input {
+        width: calc(80vw / 2);
+      }
+    }
+  }
+  .button.search {
+    @include nuemo;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    border-radius: 20px;
+    padding: 10px;
+    width: calc(100vw / 3);
+    color: $sub_color;
+    &:active {
+      @include nuemo-inset($bg_color);
+    }
+  }
+}
+
+
+

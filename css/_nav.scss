@@ -1,0 +1,71 @@
+@import "variables";
+
+nav {
+  @include sp {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: calc(100vh / 10);
+    background-color: $bg_color;
+    box-shadow:  -4px -4px 8px darken($bg_color, 10%);
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 100%;
+      height: 100%;
+      li {
+        @include nuemo; 
+        border-radius: 50%;
+        display: flex;
+        justify-content: space-between;
+        width: calc(100vw / 7);
+        height: calc(100vw / 7);
+        a {
+          display: flex;
+          margin: auto;
+          font-size: 1.25rem;
+        }
+      }
+    }
+  };
+  @include tab {
+    position: fixed;
+    top: 10vh;
+    height: 500px;
+    &:active {
+      background: $sub_color;
+    }
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      width: 100%;
+      height: 100%;
+      li {
+        @include nuemo;
+        border-radius: 50%;
+        display: flex;
+        justify-content: space-between;
+        width: 60px;
+        height: 60px;
+        margin: 10px;
+        a {
+          display: flex;
+          margin: auto;
+          font-size: 1.25rem;
+        }
+      }
+    }
+  };
+}
+
+.highlight {
+  @include nuemo-inset;
+  border-radius: 50%;
+  a {
+    color: $bg_color;
+  }
+}

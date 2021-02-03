@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+$ja_font : "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Verdana, "ＭＳ Ｐゴシック", sans-serif;
+$bg_color : #efefef;
+$sub_color : #00ccff;
+$gray: #aaaaaa;
+$font-color: darken($gray, 40%);
+$red: #ff3600;
+
+$sp: 549px; // スマホ
+$tab: 550px; // タブレットやPC
+
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
+
+@mixin tab {
+  @media (min-width: ($tab)) {
+    @content;
+  }
+}
+
+@mixin nuemo($color: $bg_color) {
+  box-shadow:  6px 6px 12px darken($color, 10%), 
+  -6px -6px 12px lighten($color, 40%);
+  background: linear-gradient(135deg, $color, lighten($color, 5%));
+}
+
+@mixin nuemo-inset($color: $sub_color) {
+  background: $color;
+  box-shadow: inset 4px 4px 8px darken($color, 10%), 
+              inset -5px -5px 10px lighten($color, 20%);
+  -webkit-box-shadow: $color;
+  -webkit-border-radius: $color;
+  -webkit-box-shadow: $color;
+
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 1;
+    transform: translateX(-100%);
+  }
+  
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+@keyframes slideInLeft {
+  from {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+  
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}

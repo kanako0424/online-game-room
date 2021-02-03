@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Basic Page Needs -->
+  <meta charset="utf-8">
+  <title>Online Game Room</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Favicon -->
+  
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+    <!--ボタン押す#とprofileが横から登場-->
+  <header>
+    <button class="profile"><span><img src="img/icon-img.png" alt="ユーザーアイコン"></span></button>
+    <h3 class="page-title">参加できるルーム</h3>
+    <button class="filter"><i class="fas fa-sliders-h"></i> 検索</button>
+  </header>
+  
+  <section id="filter" class="display">
+    <header>
+      <h3>検索</h3>
+    </header>
+    <button id="times" class="filter"><i class="fas fa-times"></i></button>
+    <form class="search-room">
+      <div class="game-name">
+        <label><i class="fas fa-gamepad"></i> ゲーム名  
+        </label>
+        <input type="text" name="name">
+      </div>
+      <div class="date">
+        <label><i class="far fa-calendar-alt"></i> 日付  
+        </label>
+        <input type="date" name="日付" min="2018-01-01">
+      </div>
+      <div class="time">
+        <label><i class="far fa-clock"></i> 時間  
+        </label>
+        <div>
+          <input type="time" name="時刻">
+          <div>　〜</div>
+          <input type="time" name="時刻">
+        </div>
+      </div>
+      <div class="age">
+        <label>年齢  
+        </label>
+        <div>
+          <input type="number" name="min-age"/>
+          <div>　〜</div>
+          <input type="number" name="max-age"/>
+        </div>
+      </div>
+      <div class="g-h">
+        <div class="gender">
+          <label>性別  
+          </label>
+          <select name="gender">
+            <option hidden>選択</option>
+            <option>男</option>
+            <option>女</option>
+            <option>男女混合</option>
+          </select>
+        </div>
+        <div class="head-count">
+          <label>人数
+          </label>
+          <input type="number" name="head-count"/>
+        </div>
+      </div>
+      <div class="call">
+        <div class="call-app">
+          <label><i class="fas fa-video"></i> 通話アプリ  
+          </label>
+          <input type="text" name="call-app">
+        </div>
+        <div class="face">
+          <label><i class="far fa-smile"></i> 顔出し  
+          </label>
+          <select name="face">
+            <option value="option" hidden>選択</option>
+            <option value="yes">あり</option>
+            <option value="no">なし</option>
+            <option value="yet">未定</option>
+          </select>
+        </div>
+      </div>
+      <div class="room-name">
+        <label>ルーム名  
+        </label>
+        <input type="text" name="room-name">
+      </div>
+      <div class="room-creater">
+        <label>作成者
+        </label>
+        <input name="username" placeholder="山田太郎">
+      </div>
+      <div class="room-description">
+        <label>その他  
+        </label>
+        <input name="others">
+      </div>
+      <button type="submit" class="button search"><i class="fas fa-search"></i>検索</button>
+    </form>
+  </section>
+  
+  
+  <section id="profile" class="display">
+    <header>
+      <button class="profile"><span><img src="img/icon-img.png" alt="ユーザーアイコン"></span></button>
+      <h3>プロフィール</h3>
+    </header>
+    <button id="times1" class="profile"><i class="fas fa-times"></i></button>
+    <ul>
+      <li class="setting"><a href="#setting">プロフィール設定</a></li>
+      <li class="inquire"><a href="#inquire">お問い合わせ</a></li>
+      <li class="logout"><a href="#logout">ログアウト</a></li>
+    </ul>
+    
+    <div id="setting" class="display">
+      <div>
+        <h3>プロフィール設定</h3>
+        <span><a class="profile" href="#profile"><i class="fas fa-times"></i></a></span>
+      </div>
+      <div class="icon-setting">
+        <span><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <form>
+          <input type="text" name="text" placeholder="userame">
+          <div><button type="submit" class="button">更新する</button></div>
+        </form>
+      </div>
+      <div class="password-setting">
+        <form>
+          <p>パスワードの変更</p>
+          <input type="password" name="password" placeholder="現在のパスワード">
+          <input type="password" name="password" placeholder="新しいパスワード">
+          <div><button type="submit" class="button">更新する</button></div>
+        </form>
+      </div>
+      <div class="gender-setting">
+        <form>
+          <div class="g-s1">
+            <p>性別</p>
+            <select name="gender">
+              <option hidden>選択</option>
+              <option>男</option>
+              <option>女</option>
+              <option>その他</option>
+              <option>未回答</option>
+            </select>
+          </div>
+          <div class="g-s2"><button type="submit" class="button">更新する</button></div>
+        </form>
+      </div>
+    </div>
+    
+    <div id="inquire" class="display">
+      <div class="inquire-header">
+        <h3>お問い合わせ</h3>
+        <span><a class="profile" href="#profile"><i class="fas fa-times"></i></a></span>
+      </div>
+      <div class="inquire-body">
+        <form>
+          <div class="name">
+            <p>お名前 <span class="indispensable">必須</span></p>
+            <input type="text" name="name" placeholder="山田太郎" required>
+          </div>
+          <div class="ruby">
+            <p>フリガナ <span class="indispensable">必須</span></p>
+            <input type="text" name="name" placeholder="ヤマダタロウ"  required>
+          </div>
+          <div class="mail">
+            <p>メールアドレス <span class="indispensable">必須</span></p>
+            <input type="email" name="email" placeholder="exmaple@example.com" required>
+          </div>
+          <div class="gender">
+            <p>性別</p>
+            <select name="gender">
+              <option>選択</option>
+              <option>男</option>
+              <option>女</option>
+              <option>その他</option>
+              <option>未回答</option>
+            </select>
+          </div>
+          <div class="item">
+            <p>お問い合わせ項目</p>
+            <select name="item">
+              <option hidden>選択</option>
+              <option>パスワードを忘れた</option>
+              <option>ルームが作成されない</option>
+              <option>ルームに参加できない</option>
+              <option>その他</option>
+            </select>
+          </div>
+          <div class="inquire-content">
+            <p>お問い合わせ内容</p>
+            <textarea rows="2" placeholder="お問い合わせの内容を記入してください"></textarea>
+          </div>
+          <div class="button-submit"><button type="submit" class="button">送信する</button></div>
+        </form>
+      </div>
+    </div>
+    
+    <div id="logout" class="display">
+      <div class="logout-header">
+        <h3>ログアウト</h3>
+        <span><a class="profile" href="#profile"><i class="fas fa-times"></i></a></span>
+      </div>
+        
+      <div class="logout-body">
+        <p>ログアウトしますか？</p>
+        <button type="submit" class="button-cancel">キャンセル</button>
+        <button type="submit" class="button">はい</button>
+      </div>
+    </div>
+    
+  </section>
+  
+  <nav class="navi">
+    <ul>
+      <li class="can-join-room highlight"><a href="#can-join-room" class="nav-link"><i class="fas fa-home"></i></a></li>
+      <li class="dm"><a href="#dm" class="nav-link"><i class="fas fa-comments"></i></a></li>
+      <li class="bell"><a href="#bell" class="nav-link"><i class="fas fa-bell"></i></a></li>
+      <li class="create-room"><a href="#create-room" class="nav-link"><i class="fas fa-plus"></i></a></li>
+      <li class="created-room"><a href="#created-room" class="nav-link"><i class="fas fa-list"></i></a></li>
+      <li class="joined-room"><a href="#joined-room" class="nav-link"><i class="fas fa-arrow-circle-right"></i></a></li>
+    </ul>
+  </nav>
+  
+  <section id="can-join-room">
+    <div class="room">
+      <div class="room-header">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div>
+          <h4>ルーム名</h4>
+          <p>ユーザーネーム</p>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="room-content">
+          <table>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                <td><i class="far fa-smile"></i>　あり</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                <td><i class="fas fa-user-friends"></i>　6名</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+              </tr>
+            </tbody>
+          </table>
+          <div>
+            <p>&lt; 詳細 &gt;</p>
+            <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+          </div>
+        </div>
+        <div class="already-joined">
+          <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+          <div>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          </div>
+        </div>
+        <button type="submit" class="button join" ontouchmove><i class="fas fa-arrow-circle-right"></i> 参加する</button>
+        <button type="submit" class="button dm"><i class="fas fa-comments" ontouchmove></i> DMする</button>
+      </div>
+    </div>
+    <div class="room">
+      <div class="room-header">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div>
+          <h4>ルーム名</h4>
+          <p>ユーザーネーム</p>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="room-content">
+          <table>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                <td><i class="far fa-smile"></i>　あり</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                <td><i class="fas fa-user-friends"></i>　6名</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+              </tr>
+            </tbody>
+          </table>
+          <div>
+            <p>&lt; 詳細 &gt;</p>
+            <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+          </div>
+        </div>
+        <div class="already-joined">
+          <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+          <div>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          </div>
+        </div>
+        <button type="submit" class="button join"><i class="fas fa-arrow-circle-right"></i> 参加する</button>
+        <button type="submit" class="button dm"><i class="fas fa-comments"></i> DMする</button>
+      </div>
+    </div>
+    <div class="room">
+      <div class="room-header">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div>
+          <h3>ルーム名</h3>
+          <p>ユーザーネーム</p>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="room-content">
+          <table>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                <td><i class="far fa-smile"></i>　あり</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                <td><i class="fas fa-user-friends"></i>　6名</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+              </tr>
+            </tbody>
+          </table>
+          <div>
+            <p>&lt; 詳細 &gt;</p>
+            <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+          </div>
+        </div>
+        <div class="already-joined">
+          <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+          <div>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          </div>
+        </div>
+        <button type="submit" class="button join"><i class="fas fa-arrow-circle-right"></i> 参加する</button>
+        <button type="submit" class="button dm"><i class="fas fa-comments"></i> DMする</button>
+      </div>
+    </div>
+    <div class="room">
+      <div class="room-header">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div>
+          <h4>ルーム名</h4>
+          <p>ユーザーネーム</p>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="room-content">
+          <table>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                <td><i class="far fa-smile"></i>　あり</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                <td><i class="fas fa-user-friends"></i>　6名</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+              </tr>
+            </tbody>
+          </table>
+          <div>
+            <p>&lt; 詳細 &gt;</p>
+            <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+          </div>
+        </div>
+        <div class="already-joined">
+          <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+          <div>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          </div>
+        </div>
+        <button type="submit" class="button join"><i class="fas fa-arrow-circle-right"></i> 参加する</button>
+        <button type="submit" class="button dm"><i class="fas fa-comments"></i> DMする</button>
+      </div>
+    </div>
+    <div class="room">
+      <div class="room-header">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div>
+          <h4>ルーム名</h4>
+          <p>ユーザーネーム</p>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="room-content">
+          <table>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                <td><i class="far fa-smile"></i>　あり</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                <td><i class="fas fa-user-friends"></i>　6名</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+              </tr>
+            </tbody>
+          </table>
+          <div>
+            <p>&lt; 詳細 &gt;</p>
+            <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+          </div>
+        </div>
+        <div class="already-joined">
+          <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+          <div>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          </div>
+        </div>
+        <button type="submit" class="button join"><i class="fas fa-arrow-circle-right"></i> 参加する</button>
+        <button type="submit" class="button dm"><i class="fas fa-comments"></i> DMする</button>
+      </div>
+    </div>
+    <div class="room">
+      <div class="room-header">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div>
+          <h4>ルーム名</h4>
+          <p>ユーザーネーム</p>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="room-content">
+          <table>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                <td><i class="far fa-smile"></i>　あり</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                <td><i class="fas fa-user-friends"></i>　6名</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+              </tr>
+            </tbody>
+          </table>
+          <div>
+            <p>&lt; 詳細 &gt;</p>
+            <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+          </div>
+        </div>
+        <div class="already-joined">
+          <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+          <div>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          </div>
+        </div>
+        <button type="submit" class="button join"><i class="fas fa-arrow-circle-right"></i> 参加する</button>
+        <button type="submit" class="button dm"><i class="fas fa-comments"></i> DMする</button>
+      </div>
+    </div>
+  </section>
+  
+  <section id="dm" class="display">
+    <div class="messages">
+      <div class="message">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div class="message-content">
+          <div class="message-header">
+            <p class="username">ユーザーネーム</p><small class="date">xx月xx日 xx:xx</small>
+          </div>
+          <small class="text">テキストテキストテキストテキスト</small>
+        </div>
+      </div>
+      <div class="message">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div class="message-content">
+          <div class="message-header">
+            <p class="username">ユーザーネーム</p><small class="date">xx月xx日 xx:xx</small>
+          </div>
+          <small class="text">テキストテキストテキストテキスト</small>
+        </div>
+      </div>
+      <div class="message">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div class="message-content">
+          <div class="message-header">
+            <p class="username">ユーザーネーム</p><small class="date">xx月xx日 xx:xx</small>
+          </div>
+          <small class="text">テキストテキストテキストテキスト</small>
+        </div>
+      </div>
+      <div class="message">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div class="message-content">
+          <div class="message-header">
+            <p class="username">ユーザーネーム</p><small class="date">xx月xx日 xx:xx</small>
+          </div>
+          <small class="text">テキストテキストテキストテキスト</small>
+        </div>
+      </div>
+      <div class="message">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div class="message-content">
+          <div class="message-header">
+            <p class="username">ユーザーネーム</p><small class="date">xx月xx日 xx:xx</small>
+          </div>
+          <small class="text">テキストテキストテキストテキスト</small>
+        </div>
+      </div>
+    </div>
+    <div class="message-display">
+      <div></div>
+    </div>
+  </section>
+  
+  <section id="bell" class="display">
+    <div class="message">
+      <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+      <div class="message-content">
+        <small class="text">ユーザーネームさんがあなたのルーム名に参加しました</small>
+        <p class="date-bell"><small class="text-muted">xx月xx日 xx:xx</small></p>
+      </div>
+    </div>
+    <div class="message">
+      <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+      <div class="message-content">
+        <small class="text">ユーザーネームさんがあなたのルーム名への参加をキャンセルしました</small>
+        <p class="date-bell"><small class="text-muted">xx月xx日 xx:xx</small></p>
+      </div>
+    </div>
+  </section>
+  
+  <section id="create-room" class="display">
+    <form class="create-room">
+      <div class="room-name">
+        <label>ルーム名  <span class="indispensable">必須</span>
+        </label>
+        <input type="text" name="room-name" required>
+      </div>
+      <div class="game-name">
+        <label><i class="fas fa-gamepad"></i>　ゲーム名  <span class="indispensable">必須</span>
+        </label>
+        <input type="text" name="name" required>
+      </div>
+      <div class="date">
+        <label><i class="far fa-calendar-alt"></i>　日付  <span class="indispensable">必須</span>
+        </label>
+        <input type="date" name="日付" min="2018-01-01" required>
+      </div>
+      <div class="time">
+        <label><i class="far fa-clock"></i>　時間 <span class="indispensable">必須</span>
+        </label>
+        <div>
+          <input type="time" name="時刻" required>
+          <div>　〜</div>
+          <input type="time" name="時刻" required>
+        </div>
+      </div>
+      <div class="age">
+        <label>年齢  (半角で記入してください)
+        </label>
+        <div>
+          <input type="number" name="min-age"/>
+          <div>　〜</div>
+          <input type="number" name="max-age"/>
+        </div>
+      </div>
+      <div class="g-h">
+        <div class="gender">
+          <label>性別  <span class="indispensable">必須</span>
+          </label>
+          <select name="gender" required>
+            <option hidden>選択</option>
+            <option>男</option>
+            <option>女</option>
+            <option>男女混合</option>
+          </select>
+        </div>
+        <div class="head-count">
+          <label>人数 <span class="indispensable">必須</span>
+          </label>
+          <input type="number" name="head-count" required>
+        </div>
+      </div>
+      <div class="call">
+        <div class="call-app">
+          <label><i class="fas fa-video"></i>　通話アプリ  <span class="indispensable">必須</span>
+          </label>
+          <input type="text" name="call-app" required>
+        </div>
+        <div class="face">
+          <label><i class="far fa-smile"></i>　顔出し  <span class="indispensable">必須</span>
+          </label>
+          <select name="face" required>
+            <option value="option" hidden>選択</option>
+            <option value="yes">あり</option>
+            <option value="no">なし</option>
+            <option value="yet">未定</option>
+          </select>
+        </div>
+      </div>
+      <div class="room-link">
+        <label>リンク  <span class="indispensable">必須</span>
+        </label>
+        <textarea name="room-link" placeholder="ルームへのリンクを記入してください" required></textarea>
+      </div>
+      <div class="room-description">
+        <label>詳細事項  
+        </label>
+        <textarea name="room-description" placeholder="詳細の情報がありましたらご記入ください"></textarea>
+      </div>
+      <button type="submit" class="button">作成</button>
+    </form>
+  </section>
+  
+  <section id="created-room" class="display">
+    <div class="room">
+      <div class="room-header">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div>
+          <h4>ルーム名</h4>
+          <p>ユーザーネーム</p>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="room-content">
+          <table>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                <td><i class="far fa-smile"></i>　あり</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                <td><i class="fas fa-user-friends"></i>　6名</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>詳細</p>
+          <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+        </div>
+        <div class="room-link">
+          <a class="room-link" href="https://zoom.us/jp-jp/meetings.html" target="_blank">ルームへのリンクを表示</a>
+        </div>
+        <div class="already-joined">
+          <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+          <div>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          </div>
+        </div>
+        <button type="submit" class="button delete"><i class="fas fa-trash-alt"></i> 削除する</button>
+        <button type="submit" class="button edit"><i class="fas fa-edit"></i> 編集する</button>
+      </div>
+    </div>
+    <div class="room">
+      <div class="room-header">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div>
+          <h4>ルーム名</h4>
+          <p>ユーザーネーム</p>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="room-content">
+          <table>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                <td><i class="far fa-smile"></i>　あり</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                <td><i class="fas fa-user-friends"></i>　6名</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>詳細</p>
+          <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+        </div>
+        <div class="room-link">
+          <a class="room-link" href="https://zoom.us/jp-jp/meetings.html" target="_blank">ルームへのリンクを表示</a>
+        </div>
+        <div class="already-joined">
+          <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+          <div>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          </div>
+        </div>
+        <button type="submit" class="button delete"><i class="fas fa-trash-alt"></i> 削除する</button>
+        <button type="submit" class="button edit"><i class="fas fa-edit"></i> 編集する</button>
+      </div>
+    </div>
+    <div class="room">
+      <div class="room-header">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div>
+          <h4>ルーム名</h4>
+          <p>ユーザーネーム</p>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="room-content">
+          <table>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                <td><i class="far fa-smile"></i>　あり</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                <td><i class="fas fa-user-friends"></i>　6名</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>詳細</p>
+          <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+        </div>
+        <div class="room-link">
+          <a class="room-link" href="https://zoom.us/jp-jp/meetings.html" target="_blank">ルームへのリンクを表示</a>
+        </div>
+        <div class="already-joined">
+          <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+          <div>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          </div>
+        </div>
+        <button type="submit" class="button delete"><i class="fas fa-trash-alt"></i> 削除する</button>
+        <button type="submit" class="button edit"><i class="fas fa-edit"></i> 編集する</button>
+      </div>
+    </div>
+    <div class="room">
+      <div class="room-header">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div>
+          <h4>ルーム名</h4>
+          <p>ユーザーネーム</p>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="room-content">
+          <table>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                <td><i class="far fa-smile"></i>　あり</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                <td><i class="fas fa-user-friends"></i>　6名</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>詳細</p>
+          <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+        </div>
+        <div class="room-link">
+          <a class="room-link" href="https://zoom.us/jp-jp/meetings.html" target="_blank">ルームへのリンクを表示</a>
+        </div>
+        <div class="already-joined">
+          <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+          <div>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          </div>
+        </div>
+        <button type="submit" class="button delete"><i class="fas fa-trash-alt"></i> 削除する</button>
+        <button type="submit" class="button edit"><i class="fas fa-edit"></i> 編集する</button>
+      </div>
+    </div>
+    <div class="room">
+      <div class="room-header">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div>
+          <h4>ルーム名</h4>
+          <p>ユーザーネーム</p>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="room-content">
+          <table>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                <td><i class="far fa-smile"></i>　あり</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                <td><i class="fas fa-user-friends"></i>　6名</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>詳細</p>
+          <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+        </div>
+        <div class="room-link">
+          <a class="room-link" href="https://zoom.us/jp-jp/meetings.html" target="_blank">ルームへのリンクを表示</a>
+        </div>
+        <div class="already-joined">
+          <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+          <div>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          </div>
+        </div>
+        <button type="submit" class="button delete"><i class="fas fa-trash-alt"></i> 削除する</button>
+        <button type="submit" class="button edit"><i class="fas fa-edit"></i> 編集する</button>
+      </div>
+    </div>
+  </section>
+  
+  <section id="joined-room" class="display">
+    <div class="room">
+      <div class="room-header">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div>
+          <h4>ルーム名</h4>
+          <p>ユーザーネーム</p>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="room-content">
+          <table>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                <td><i class="far fa-smile"></i>　あり</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                <td><i class="fas fa-user-friends"></i>　6名</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>詳細</p>
+          <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+        </div>
+        <div class="room-link">
+          <a class="room-link" href="https://zoom.us/jp-jp/meetings.html" target="_blank">ルームへのリンクを表示</a>
+        </div>
+        <div class="already-joined">
+          <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+          <div>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          </div>
+        </div>
+        <button type="submit" class="button cancel-join"><i class="fas fa-times-circle"></i> 参加キャンセル</button>
+        <button type="submit" class="button dm"><i class="fas fa-comments"></i> DMする</button>
+      </div>
+    </div>
+    <div class="room">
+      <div class="room-header">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div>
+          <h4>ルーム名</h4>
+          <p>ユーザーネーム</p>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="room-content">
+          <table>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                <td><i class="far fa-smile"></i>　あり</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                <td><i class="fas fa-user-friends"></i>　6名</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>詳細</p>
+          <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+        </div>
+        <div class="room-link">
+          <a class="room-link" href="https://zoom.us/jp-jp/meetings.html" target="_blank">ルームへのリンクを表示</a>
+        </div>
+        <div class="already-joined">
+          <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+          <div>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          </div>
+        </div>
+        <button type="submit" class="button cancel-join"><i class="fas fa-times-circle"></i> 参加キャンセル</button>
+        <button type="submit" class="button dm"><i class="fas fa-comments"></i> DMする</button>
+      </div>
+    </div>
+    <div class="room">
+      <div class="room-header">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div>
+          <h4>ルーム名</h4>
+          <p>ユーザーネーム</p>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="room-content">
+          <table>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                <td><i class="far fa-smile"></i>　あり</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                <td><i class="fas fa-user-friends"></i>　6名</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>詳細</p>
+          <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+        </div>
+        <div class="room-link">
+          <a class="room-link" href="https://zoom.us/jp-jp/meetings.html" target="_blank">ルームへのリンクを表示</a>
+        </div>
+        <div class="already-joined">
+          <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+          <div>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          </div>
+        </div>
+        <button type="submit" class="button cancel-join"><i class="fas fa-times-circle"></i> 参加キャンセル</button>
+        <button type="submit" class="button dm"><i class="fas fa-comments"></i> DMする</button>
+      </div>
+    </div>
+    <div class="room">
+      <div class="room-header">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div>
+          <h4>ルーム名</h4>
+          <p>ユーザーネーム</p>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="room-content">
+          <table>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                <td><i class="far fa-smile"></i>　あり</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                <td><i class="fas fa-user-friends"></i>　6名</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>詳細</p>
+          <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+        </div>
+        <div class="room-link">
+          <a class="room-link" href="https://zoom.us/jp-jp/meetings.html" target="_blank">ルームへのリンクを表示</a>
+        </div>
+        <div class="already-joined">
+          <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+          <div>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          </div>
+        </div>
+        <button type="submit" class="button cancel-join"><i class="fas fa-times-circle"></i> 参加キャンセル</button>
+        <button type="submit" class="button dm"><i class="fas fa-comments"></i> DMする</button>
+      </div>
+    </div>
+    <div class="room">
+      <div class="room-header">
+        <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+        <div>
+          <h4>ルーム名</h4>
+          <p>ユーザーネーム</p>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="room-content">
+          <table>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                <td><i class="far fa-smile"></i>　あり</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                <td><i class="fas fa-user-friends"></i>　6名</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>詳細</p>
+          <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+        </div>
+        <div class="room-link">
+          <a class="room-link" href="https://zoom.us/jp-jp/meetings.html" target="_blank">ルームへのリンクを表示</a>
+        </div>
+        <div class="already-joined">
+          <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+          <div>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          </div>
+        </div>
+        <button type="submit" class="button cancel-join"><i class="fas fa-times-circle"></i> 参加キャンセル</button>
+        <button type="submit" class="button dm"><i class="fas fa-comments"></i> DMする</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="user-page" class="display">
+    <span><a class="user-page-times"><i class="fas fa-times"></i></a></span>
+    <div class="user-header">
+      <div><img src="img/icon-img.png" alt="ユーザーアイコン"></div>
+      <h3>ユーザーネーム</h3>
+    </div>
+    <div class="user-body">
+      <div>よくやるゲームはウイイレです。よろしくお願いします。</div>
+      <div class="age"><i class="fas fa-birthday-cake"></i>17歳</div>
+    </div>
+    <p>このユーザーが作ったルーム</p>
+    <div class="user-created-room">
+      <div class="room">
+        <div class="room-header">
+          <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          <div>
+            <h3>ルーム名</h3>
+            <p>ユーザーネーム</p>
+          </div>
+        </div>
+        <div class="room-body">
+          <div class="room-content">
+            <table>
+              <tbody>
+                <tr>
+                  <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                  <td><i class="far fa-smile"></i>　あり</td>
+                </tr>
+                <tr>
+                  <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                  <td><i class="fas fa-user-friends"></i>　6名</td>
+                </tr>
+                <tr>
+                  <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                  <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+                </tr>
+              </tbody>
+            </table>
+            <div>
+              <p>&lt; 詳細 &gt;</p>
+              <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+            </div>
+          </div>
+          <div class="already-joined">
+            <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+            <div>
+              <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+              <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+              <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+              <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+              <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            </div>
+          </div>
+          <button type="submit" class="button join"><i class="fas fa-arrow-circle-right"></i> 参加する</button>
+          <button type="submit" class="button dm"><i class="fas fa-comments"></i> DMする</button>
+        </div>
+      </div>
+      <div class="room">
+        <div class="room-header">
+          <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          <div>
+            <h3>ルーム名</h3>
+            <p>ユーザーネーム</p>
+          </div>
+        </div>
+        <div class="room-body">
+          <div class="room-content">
+            <table>
+              <tbody>
+                <tr>
+                  <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                  <td><i class="far fa-smile"></i>　あり</td>
+                </tr>
+                <tr>
+                  <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                  <td><i class="fas fa-user-friends"></i>　6名</td>
+                </tr>
+                <tr>
+                  <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                  <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+                </tr>
+              </tbody>
+            </table>
+            <div>
+              <p>&lt; 詳細 &gt;</p>
+              <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+            </div>
+          </div>
+          <div class="already-joined">
+            <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+            <div>
+              <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+              <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+              <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+              <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+              <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            </div>
+          </div>
+          <button type="submit" class="button join"><i class="fas fa-arrow-circle-right"></i> 参加する</button>
+          <button type="submit" class="button dm"><i class="fas fa-comments"></i> DMする</button>
+        </div>
+      </div>
+      <div class="room">
+        <div class="room-header">
+          <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+          <div>
+            <h3>ルーム名</h3>
+            <p>ユーザーネーム</p>
+          </div>
+        </div>
+        <div class="room-body">
+          <div class="room-content">
+            <table>
+              <tbody>
+                <tr>
+                  <td><i class="fas fa-gamepad"></i>　ゲーム名</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><i class="fas fa-video"></i>　通話アプリ名</td>
+                  <td><i class="far fa-smile"></i>　あり</td>
+                </tr>
+                <tr>
+                  <td><i class="fas fa-birthday-cake"></i>　30歳 ~ 31歳</td>
+                  <td><i class="fas fa-user-friends"></i>　6名</td>
+                </tr>
+                <tr>
+                  <td><i class="far fa-calendar-alt"></i>　11月30日(火)</td>
+                  <td><i class="far fa-clock"></i>　12:00 ~ 13:00</td>
+                </tr>
+              </tbody>
+            </table>
+            <div>
+              <p>&lt; 詳細 &gt;</p>
+              <p>詳細のテキスト詳細のテキスト詳細のテキスト</p>
+            </div>
+          </div>
+          <div class="already-joined">
+            <p><i class="fas fa-user-friends"></i> 参加する予定のメンバー</p>
+            <div>
+              <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+              <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+              <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+              <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+              <span class="icon"><img src="img/icon-img.png" alt="ユーザーアイコン"></span>
+            </div>
+          </div>
+          <button type="submit" class="button join"><i class="fas fa-arrow-circle-right"></i> 参加する</button>
+          <button type="submit" class="button dm"><i class="fas fa-comments"></i> DMする</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+
+  <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyBLlWA6zjbOghpdbomWAWI6hG9mTWRMOBQ",
+    authDomain: "online-game-room.firebaseapp.com",
+    databaseURL: "###",
+    projectId: "online-game-room",
+    storageBucket: "online-game-room.appspot.com",
+    messagingSenderId: "599602040493",
+    appId: "1:599602040493:web:01a27fcaaaa7ee6f2ec024",
+    measurementId: "G-TB1FB4TQ5H"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+</body>
+</html>

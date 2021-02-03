@@ -1,0 +1,75 @@
+@import "variables";
+
+#create-user {
+  margin: 20px auto;
+  padding: 30px;
+  h2 {
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+  }
+  p, label {
+    padding: 10px 0px;
+  }
+  form {
+    @include tab {
+      width: 70%;
+    };
+    @include sp {
+      width: 100%;
+    };
+    margin: auto;
+    div {
+      margin: 5px;
+      padding: 15px;
+      margin: auto;
+      input {
+        width: 100%;
+      }
+    }
+    .birthday {
+      padding: 0px 15px;
+      .birthday-select {
+        display: flex;
+        justify-content: space-between;
+        padding: 0px;
+      }
+      select {
+        width: 30%;
+      }
+    }
+    .gender-select {
+      padding: 15px 0px;
+      width: 30%;
+      margin: auto;
+      .gender {
+        width: 100%;
+      }
+    }
+    .button {
+      @include nuemo;
+      display: flex;
+      width: 30%;
+      margin:  20px auto;
+      padding: 5px;
+      background-color: $bg_color;
+      border-radius: 30px;
+      &:active {
+        @include nuemo-inset($bg_color);
+      }
+      span {
+        width: 100%;
+        height: 100%;
+        font-size: 100%;
+        padding: 5px;
+        color: $bg_color;
+        background: $sub_color;
+        border-radius: 30px;
+      }
+    }
+    a {
+      color: $sub_color;
+    }
+  }
+}
